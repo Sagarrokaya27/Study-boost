@@ -12,26 +12,6 @@ StudyMate_Full_Stack/
 └── README.md
 ```
 
-## Backend Setup
-
-Open a terminal inside the `backend` folder:
-
-```bash
-py -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8000
-```
-
-## Frontend
-
-After the backend is running, open `frontend/index.html`.
-
-## Demo Accounts
-
-- Faculty: `faculty@studymate.demo` / `Demo123!`
-- Student: `student@studymate.demo` / `Demo123!`
-
 ## Included Features
 
 - Faculty and Student interfaces
