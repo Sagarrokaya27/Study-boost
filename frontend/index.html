@@ -1,0 +1,590 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>StudyMate</title><style>:root {
+    --p:#635bff;
+    --ink:#172033;
+    --muted:#737c93;
+    --line:#e7e9f1;
+    --bg:#f6f7fb;
+    --red:#ef5350;
+    --amber:#f59e0b;
+    --green:#20a66a
+}
+* {
+    box-sizing:border-box
+}
+body {
+    margin:0;
+    font-family:Inter,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--ink)
+}
+button,input,select,textarea {
+    font:inherit
+}
+.app {
+    display:flex;
+    min-height:100vh
+}
+.side {
+    width:250px;
+    background:linear-gradient(180deg,#111a3b,#1b2857);
+    color:white;
+    position:fixed;
+    inset:0 auto 0 0;
+    padding:20px 15px
+}
+.brand {
+    display:flex;
+    gap:10px;
+    align-items:center;
+    margin:0 8px 20px
+}
+.brand b {
+    font-size:20px
+}
+.brand small {
+    display:block;
+    color:#aeb8d8;
+    font-size:9px
+}
+.logo {
+    font-size:28px
+}
+.switch {
+    display:flex;
+    background:#26325e;
+    padding:4px;
+    border-radius:9px;
+    margin-bottom:16px
+}
+.switch button {
+    flex:1;
+    border:0;
+    background:none;
+    color:#ccd4ef;
+    padding:8px;
+    border-radius:7px;
+    font-size:10px
+}
+.switch .on {
+    background:#fff;
+    color:#5147e8;
+    font-weight:700
+}
+.navtitle {
+    font-size:8px;
+    color:#8791b7;
+    text-transform:uppercase;
+    margin:14px 10px 5px
+}
+.nav button {
+    width:100%;
+    border:0;
+    background:none;
+    color:#dce3f7;
+    text-align:left;
+    padding:10px 12px;
+    border-radius:8px;
+    font-size:10px;
+    cursor:pointer
+}
+.nav button:hover,.nav .active {
+    background:#7166ff33
+}
+.main {
+    margin-left:250px;
+    width:calc(100% - 250px)
+}
+.top {
+    height:75px;
+    background:#fff;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 27px;
+    position:sticky;
+    top:0;
+    z-index:5
+}
+.top h1 {
+    font-size:19px;
+    margin:0 0 3px
+}
+.top p {
+    font-size:9px;
+    color:var(--muted);
+    margin:0
+}
+.topright {
+    display:flex;
+    gap:8px
+}
+.topright button,.topright select {
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:8px;
+    padding:8px 10px;
+    font-size:9px
+}
+.content {
+    padding:23px 27px
+}
+.grid {
+    display:grid;
+    gap:14px
+}
+.kpis {
+    grid-template-columns:repeat(5,1fr)
+}
+.cols2 {
+    grid-template-columns:1.1fr .9fr
+}
+.cols3 {
+    grid-template-columns:repeat(3,1fr)
+}
+.card {
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:16px
+}
+.kpi {
+    min-height:105px
+}
+.kpi small {
+    font-size:9px;
+    color:var(--muted)
+}
+.kpi strong {
+    display:block;
+    font-size:25px;
+    margin:9px 0 4px
+}
+.up {
+    color:var(--green)
+}
+.down {
+    color:var(--red)
+}
+.head {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:12px
+}
+.head h3 {
+    font-size:13px;
+    margin:0
+}
+.link {
+    border:0;
+    background:none;
+    color:var(--p);
+    font-size:9px;
+    font-weight:700;
+    cursor:pointer
+}
+.primary {
+    background:var(--p);
+    color:#fff;
+    border:0;
+    border-radius:8px;
+    padding:9px 12px;
+    font-size:9px;
+    font-weight:700;
+    cursor:pointer
+}
+.donut {
+    width:145px;
+    height:145px;
+    border-radius:50%;
+    background:conic-gradient(var(--red) 0 11%,var(--amber) 11% 38%,var(--green) 38%);
+    position:relative
+}
+.donut:after {
+    content:"42.6";
+    position:absolute;
+    inset:28px;
+    border-radius:50%;
+    background:#fff;
+    display:grid;
+    place-items:center;
+    font-weight:800;
+    font-size:20px
+}
+.donutrow {
+    display:flex;
+    gap:25px;
+    align-items:center
+}
+.legend {
+    display:grid;
+    gap:10px;
+    font-size:9px
+}
+.dot {
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    display:inline-block;
+    margin-right:6px
+}
+.r {
+    background:var(--red)
+}
+.a {
+    background:var(--amber)
+}
+.g {
+    background:var(--green)
+}
+.bars {
+    height:170px;
+    display:flex;
+    align-items:end;
+    gap:12px;
+    border-bottom:1px solid var(--line)
+}
+.barcol {
+    flex:1;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:end;
+    align-items:center;
+    gap:5px
+}
+.bar {
+    width:100%;
+    max-width:35px;
+    background:linear-gradient(#908aff,var(--p));
+    border-radius:5px 5px 0 0
+}
+.barcol small {
+    font-size:8px;
+    color:var(--muted)
+}
+.tablewrap {
+    overflow:auto
+}
+.table {
+    width:100%;
+    border-collapse:collapse;
+    min-width:650px;
+    font-size:9px
+}
+.table th {
+    background:#fafaff;
+    color:#788095;
+    text-align:left;
+    padding:10px
+}
+.table td {
+    padding:11px 10px;
+    border-top:1px solid #f0f1f5
+}
+.person {
+    display:flex;
+    align-items:center;
+    gap:8px
+}
+.avatar {
+    width:29px;
+    height:29px;
+    border-radius:50%;
+    background:#eceaff;
+    color:#5147e8;
+    display:grid;
+    place-items:center;
+    font-size:8px;
+    font-weight:800
+}
+.mini {
+    font-size:8px;
+    color:var(--muted)
+}
+.pill {
+    padding:4px 8px;
+    border-radius:20px;
+    font-size:8px;
+    font-weight:700
+}
+.high {
+    background:#ffe6e6;
+    color:#d63838
+}
+.medium {
+    background:#fff1d5;
+    color:#ad6900
+}
+.low {
+    background:#e3f7ed;
+    color:#13784c
+}
+.action {
+    border:1px solid #dcd8ff;
+    background:#faf9ff;
+    color:#5147e8;
+    border-radius:7px;
+    padding:6px 8px;
+    font-size:8px;
+    cursor:pointer
+}
+.alert {
+    display:flex;
+    gap:9px;
+    padding:10px;
+    background:#fff7f7;
+    border:1px solid #ffe4e4;
+    border-radius:9px;
+    margin-bottom:7px
+}
+.alert b {
+    font-size:9px
+}
+.alert small {
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+    margin-top:3px
+}
+.quickgrid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px
+}
+.quick {
+    border:1px solid var(--line);
+    background:#fff;
+    border-radius:9px;
+    padding:13px 5px;
+    font-size:8px;
+    cursor:pointer
+}
+.quick span {
+    display:block;
+    font-size:18px;
+    margin-bottom:5px
+}
+.toolbar {
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:13px
+}
+.search {
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:9px;
+    width:260px;
+    font-size:9px;
+    outline:0
+}
+.progress {
+    height:7px;
+    background:#eeeef5;
+    border-radius:8px;
+    overflow:hidden
+}
+.progress i {
+    display:block;
+    height:100%;
+    background:var(--p)
+}
+.subjectgrid {
+    grid-template-columns:repeat(5,1fr)
+}
+.subject .score {
+    font-size:22px;
+    font-weight:800;
+    margin:8px 0
+}
+.timeline {
+    display:grid;
+    gap:8px
+}
+.step {
+    display:flex;
+    gap:9px;
+    align-items:center;
+    padding:10px;
+    border:1px solid var(--line);
+    border-radius:9px
+}
+.num {
+    width:24px;
+    height:24px;
+    background:#eceaff;
+    color:#5147e8;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:9px;
+    font-weight:800
+}
+.step b {
+    font-size:9px
+}
+.step small {
+    display:block;
+    color:var(--muted);
+    font-size:8px;
+    margin-top:3px
+}
+.muted {
+    color:var(--muted)
+}
+.modalbg {
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#10182c80;
+    z-index:50;
+    align-items:center;
+    justify-content:center;
+    padding:18px
+}
+.modalbg.show {
+    display:flex
+}
+.modal {
+    background:#fff;
+    border-radius:14px;
+    padding:20px;
+    width:min(620px,100%);
+    max-height:90vh;
+    overflow:auto
+}
+.close {
+    float:right;
+    border:0;
+    background:#f0f1f6;
+    border-radius:7px;
+    width:30px;
+    height:30px;
+    cursor:pointer
+}
+.fields {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px
+}
+.field label {
+    display:block;
+    font-size:8px;
+    color:var(--muted);
+    margin-bottom:4px
+}
+.field input,.field select,.field textarea {
+    width:100%;
+    border:1px solid var(--line);
+    border-radius:7px;
+    padding:9px;
+    font-size:9px
+}
+.field textarea {
+    min-height:80px
+}
+.toast {
+    position:fixed;
+    right:18px;
+    bottom:18px;
+    background:#18213f;
+    color:#fff;
+    padding:11px 14px;
+    border-radius:9px;
+    font-size:9px;
+    z-index:100
+}
+.mobile {
+    display:none
+}
+@media(max-width:1050px) {
+    .kpis {
+        grid-template-columns:repeat(3,1fr)
+    }
+    .subjectgrid {
+        grid-template-columns:repeat(3,1fr)
+    }
+}
+@media(max-width:800px) {
+    .side {
+        transform:translateX(-100%);
+        transition:.2s
+    }
+    .side.open {
+        transform:none
+    }
+    .main {
+        margin-left:0;
+        width:100%
+    }
+    .mobile {
+        display:block
+    }
+    .top {
+        padding:0 14px
+    }
+    .topright select,.topright .name {
+        display:none
+    }
+    .content {
+        padding:15px
+    }
+    .kpis,.cols2,.cols3,.subjectgrid,.fields {
+        grid-template-columns:1fr
+    }
+    .toolbar {
+        flex-direction:column
+    }
+    .search {
+        width:100%
+    }
+}
+</style></head><body><div id="root"></div><div id="modalbg" class="modalbg"></div><div id="toast"></div><script>
+const API="http://127.0.0.1:8000/api",S={role:"faculty",page:"dashboard",students:[],plans:[],assignments:[],resources:[],alerts:[],followups:[]};
+async function api(p,o={}){let r=await fetch(API+p,{headers:{"Content-Type":"application/json"},...o});let d=await r.json();if(!r.ok)throw Error(d.detail||"Request failed");return d}
+function toast(t){let x=document.getElementById("toast");x.textContent=t;x.className="toast";setTimeout(()=>x.className="",2300)}
+function modal(h){let x=document.getElementById("modalbg");x.innerHTML='<div class="modal">'+h+"</div>";x.classList.add("show")}function closeModal(){document.getElementById("modalbg").classList.remove("show")}
+const F=[["Overview","dashboard","📊 Dashboard"],["","students","👥 Students"],["","alerts","🔔 Alerts"],["Analytics","risk","📈 Risk Analytics"],["","trends","〽️ Trends"],["","insights","💡 Insights"],["Interventions","plans","📝 Plans"],["","resources","📚 Resources"],["","followups","↻ Follow-ups"],["System","reports","📄 Reports"],["","settings","⚙️ Settings"]];
+const T={dashboard:["Dashboard","Early warning, explanation and intervention"],students:["Students","Search and support students"],alerts:["Alerts & Notifications","Prioritised academic warnings"],risk:["Risk Analytics","Understand academic risk"],trends:["Performance Trends","Track performance movement"],insights:["Intervention Insights","Measure intervention effectiveness"],plans:["Intervention Plans","Create personalised support"],resources:["Resources Library","Learning resources"],followups:["Follow-ups","Mentor check-ins"],reports:["Reports","Generate live reports"],settings:["Settings","Manage preferences"]};
+function go(p){S.page=p;render()}function setRole(r){S.role=r;S.page="dashboard";render()}
+function nav(){return F.map(a=>(a[0]?'<div class="navtitle">'+a[0]+"</div>":"")+`<button class="${S.page===a[1]?"active":""}" onclick="go('${a[1]}')">${a[2]}</button>`).join("")}
+function shell(body){let t=T[S.page]||T.dashboard;return `<aside class="side" id="side"><div class="brand"><div class="logo">🎓</div><div><b>StudyMate</b><small>AI Academic Support</small></div></div><div class="switch"><button class="${S.role==="faculty"?"on":""}" onclick="setRole('faculty')">Faculty</button><button class="${S.role==="student"?"on":""}" onclick="setRole('student')">Student</button></div><nav class="nav">${nav()}</nav></aside><main class="main"><header class="top"><div><button class="mobile" onclick="side.classList.toggle('open')">☰</button><h1>${t[0]}</h1><p>${t[1]}</p></div><div class="topright"><select><option>Semester 2 • 2026</option></select><button onclick="go('alerts')">🔔</button><button onclick="go('settings')">👤 <span class="name">${S.role==="student"?"Rahul Kumar":"Prof. Arjun Sharma"}</span></button></div></header><section class="content">${body}</section></main>`}
+function k(a,b,c,d=""){return `<div class="card kpi"><small>${a}</small><strong>${b}</strong><small class="${d}">${c}</small></div>`}
+function table(list){return `<div class="tablewrap"><table class="table"><thead><tr><th>Student</th><th>Risk</th><th>Attendance</th><th>Section</th><th></th></tr></thead><tbody>${list.map(s=>`<tr><td><div class="person"><span class="avatar">${s.name.split(" ").map(x=>x[0]).join("")}</span><div><b>${s.name}</b><div class="mini">${s.student_id}</div></div></div></td><td><b>${s.risk}/100</b><br><span class="pill ${s.risk>=70?"high":s.risk>=40?"medium":"low"}">${s.risk>=70?"High":s.risk>=40?"Medium":"Low"}</span></td><td>${s.attendance}%</td><td>${s.section}</td><td><button class="action" onclick="view(${s.id})">View</button></td></tr>`).join("")}</tbody></table></div>`}
+function dash(){let h=S.students.filter(x=>x.risk>=70).length,m=S.students.filter(x=>x.risk>=40&&x.risk<70).length,l=S.students.length-h-m;return `<div class="grid kpis">${k("Total Students",S.students.length,"Live DB","up")}${k("High Risk",h,"Immediate support","down")}${k("Medium Risk",m,"Monitor")}${k("Low Risk",l,"Stable","up")}${k("Avg Risk",S.students.length?Math.round(S.students.reduce((a,x)=>a+x.risk,0)/S.students.length):0,"Calculated")}</div><div class="grid cols2" style="margin-top:14px"><div class="card"><div class="head"><h3>Risk Distribution</h3><button class="link" onclick="go('risk')">Analysis →</button></div><div class="donutrow"><div class="donut"></div><div class="legend"><div><i class="dot r"></i>${h} High</div><div><i class="dot a"></i>${m} Medium</div><div><i class="dot g"></i>${l} Low</div></div></div></div><div class="card"><div class="head"><h3>Risk Trend</h3><button class="link" onclick="go('trends')">View →</button></div><div class="bars">${[82,76,71,65,59,54].map((v,i)=>`<div class="barcol"><div class="bar" style="height:${v*1.25}px"></div><small>W${i+1}</small></div>`).join("")}</div></div></div><div class="grid cols2" style="margin-top:14px"><div class="card"><div class="head"><h3>High Risk Students</h3><button class="link" onclick="go('students')">All students</button></div>${table(S.students.filter(x=>x.risk>=70).slice(0,5))}</div><div class="card"><div class="head"><h3>Quick Actions</h3></div><div class="quickgrid"><button class="quick" onclick="newPlan()"><span>➕</span>Intervention</button><button class="quick" onclick="newResource()"><span>📚</span>Resource</button><button class="quick" onclick="toast('Announcement composer opened')"><span>📣</span>Announcement</button><button class="quick" onclick="report()"><span>📄</span>Report</button></div><div class="head" style="margin-top:14px"><h3>Recent Alerts</h3><button class="link" onclick="go('alerts')">All</button></div>${S.alerts.slice(0,3).map(a=>`<div class="alert">🚨 <div><b>${a.title}</b><small>${a.message}</small></div></div>`).join("")}</div></div>`}
+function students(){return `<div class="toolbar"><input id="q" class="search" placeholder="Search student..." oninput="filter()"><button class="primary" onclick="addStudent()">+ Add Student</button></div><div class="card" id="tbl">${table(S.students)}</div>`}
+function filter(){let q=document.getElementById("q").value.toLowerCase();document.querySelectorAll("#tbl tbody tr").forEach(r=>r.style.display=r.innerText.toLowerCase().includes(q)?"":"none")}
+function view(id){let s=S.students.find(x=>x.id===id);modal(`<button class="close" onclick="closeModal()">×</button><h2 style="font-size:17px">${s.name}</h2><p class="muted" style="font-size:9px">${s.student_id} • Section ${s.section}</p><div class="grid cols3">${k("Risk",s.risk+"/100","Current",s.risk>=70?"down":"")}${k("Attendance",s.attendance+"%","Current")}${k("Health",s.health+"/100","Academic","up")}</div><div class="card" style="margin-top:12px"><b style="font-size:10px">Why at risk?</b><p class="muted" style="font-size:9px;line-height:1.7">The system combines attendance, recent performance, subject scores and assignment completion. This prototype uses an explainable weighted risk engine.</p></div><button class="primary" style="margin-top:12px" onclick="closeModal();newPlan(${s.id})">Create Intervention</button>`)}
+function alerts(){return `<div class="toolbar"><b style="font-size:10px">${S.alerts.filter(x=>!x.is_read).length} unread</b><button class="primary" onclick="readAll()">Mark all read</button></div><div class="card">${S.alerts.map(a=>`<div class="alert">⚠️ <div><b>${a.title}</b><small>${a.message}</small></div><span class="pill ${a.level==="high"?"high":"medium"}">${a.is_read?"Read":"Unread"}</span></div>`).join("")}</div>`}
+function risk(){return `<div class="grid cols3">${k("High Risk",S.students.filter(x=>x.risk>=70).length,"Immediate","down")}${k("Main Driver","Performance","Prototype factor")}${k("Improving","34","This month","up")}</div><div class="grid cols2" style="margin-top:14px"><div class="card"><div class="head"><h3>Risk Factor Contribution</h3></div>${[["Recent performance",30],["Subject performance",30],["Attendance",25],["Assignments",15]].map(x=>`<div style="margin:14px 0"><div class="head"><span style="font-size:9px">${x[0]}</span><b style="font-size:9px">${x[1]}%</b></div><div class="progress"><i style="width:${x[1]}%"></i></div></div>`).join("")}</div><div class="card"><h3 style="font-size:13px">What-If Simulator</h3><p class="muted" style="font-size:9px">Change attendance and subject performance to see projected risk.</p><button class="primary" onclick="simulate()">Open Simulator</button></div></div>`}
+function trends(){return `<div class="card"><div class="head"><h3>Performance Trend</h3><button class="primary" onclick="simulate()">What-If</button></div><div class="bars">${[82,77,72,67,61,57,62,68,73,78].map((v,i)=>`<div class="barcol"><div class="bar" style="height:${v*1.3}px"></div><small>W${i+1}</small></div>`).join("")}</div></div>`}
+function insights(){return `<div class="grid cols3">${k("Successful Plans","71%","↑ 8%","up")}${k("Avg Risk Reduction","18.4%","Per plan","up")}${k("Needs Escalation","9","Students","down")}</div><div class="card" style="margin-top:14px"><div class="timeline">${["Attendance support","Subject revision","Assignment recovery","Mentor follow-up"].map((x,i)=>`<div class="step"><span class="num">${i+1}</span><div style="flex:1"><b>${x}</b><small>Completion ${78-i*7}%</small><div class="progress" style="margin-top:5px"><i style="width:${78-i*7}%"></i></div></div></div>`).join("")}</div></div>`}
+function plans(){return `<div class="toolbar"><span class="muted" style="font-size:9px">Live intervention plans from the database.</span><button class="primary" onclick="newPlan()">+ New Plan</button></div><div class="grid cols2">${S.plans.length?S.plans.map(p=>`<div class="card"><div class="head"><h3>${p.title}</h3><span class="pill medium">${p.priority}</span></div><p class="muted" style="font-size:9px">${p.description}</p><div class="progress"><i style="width:${p.progress}%"></i></div><small class="muted">${p.progress}% • ${p.status}</small></div>`).join(""):'<div class="card muted" style="font-size:9px">No plans yet.</div>'}</div>`}
+function resources(){return `<div class="toolbar"><input class="search" placeholder="Search resources..." oninput="resFilter(this.value)"><button class="primary" onclick="newResource()">+ Add Resource</button></div><div class="card" id="res">${S.resources.map(r=>`<div class="step"><span class="num">📚</span><div style="flex:1"><b>${r.title}</b><small>${r.subject} • ${r.type} • ${r.duration}</small></div><button class="action" onclick="toast('Resource opened')">Open</button></div>`).join("")}</div>`}
+function resFilter(q){document.getElementById("res").innerHTML=S.resources.filter(r=>(r.title+r.subject).toLowerCase().includes(q.toLowerCase())).map(r=>`<div class="step"><span class="num">📚</span><div style="flex:1"><b>${r.title}</b><small>${r.subject} • ${r.type} • ${r.duration}</small></div><button class="action" onclick="toast('Resource opened')">Open</button></div>`).join("")}
+function followups(){return `<div class="toolbar"><span class="muted" style="font-size:9px">Mentor check-ins.</span><button class="primary" onclick="newFollowup()">+ Add</button></div><div class="card"><div class="timeline">${S.followups.length?S.followups.map(f=>`<div class="step"><span class="num">↻</span><div style="flex:1"><b>${f.title}</b><small>Due ${f.due} • ${f.status}</small></div><button class="action" onclick="completeFollowup(${f.id})">Complete</button></div>`).join(""):'<span class="muted" style="font-size:9px">No follow-ups yet.</span>'}</div></div>`}
+function reports(){return `<div class="card"><h3 style="font-size:13px">Generate Risk Report</h3><p class="muted" style="font-size:9px">Uses live database values.</p><button class="primary" onclick="report()">Generate Report</button></div>`}
+function settings(){return `<div class="card"><h3 style="font-size:13px">Settings</h3><div class="fields"><div class="field"><label>Name</label><input value="${S.role==="student"?"Rahul Kumar":"Prof. Arjun Sharma"}"></div><div class="field"><label>Notifications</label><select><option>Enabled</option><option>Disabled</option></select></div></div><button class="primary" style="margin-top:12px" onclick="toast('Settings saved')">Save</button></div>`}
+function student(){let s=S.students[0]||{};return `<div class="card"><h2 style="font-size:19px;margin:0 0 5px">Hello, Rahul 👋</h2><p class="muted" style="font-size:9px">Your academic overview and intervention plan.</p></div><div class="grid kpis" style="margin-top:14px">${k("Academic Health",(s.health||64)+"/100","Current","down")}${k("Current Risk",(s.risk||78)+"%","High","down")}${k("Class Rank",(s.class_rank||28)+"/60","Current")}${k("Attendance",(s.attendance||72)+"%","Current","up")}${k("Assignments","1/4","3 pending","down")}</div><div class="grid cols2" style="margin-top:14px"><div class="card"><div class="head"><h3>Why is my risk high?</h3><button class="link" onclick="go('risk')">Analysis</button></div><div class="donutrow"><div class="donut"></div><div class="legend"><div><i class="dot r"></i>Recent performance 30%</div><div><i class="dot a"></i>Subject performance 30%</div><div><i class="dot a"></i>Attendance 25%</div><div><i class="dot g"></i>Assignments 15%</div></div></div></div><div class="card"><div class="head"><h3>My Intervention Plan</h3><button class="link" onclick="go('plans')">View</button></div><div class="timeline">${["Improve Attendance","Focus on Java & OS","Complete Assignments","Weekly Review"].map((x,i)=>`<div class="step"><span class="num">${i+1}</span><div><b>${x}</b><small>${["Attend 90% classes","Complete revision","3 pending tasks","Weekly assessment"][i]}</small></div></div>`).join("")}</div></div></div><div class="card" style="margin-top:14px"><div class="head"><h3>Subject Performance</h3></div><div class="grid subjectgrid">${[["Java",42],["OS",48],["DSA",65],["English",78],["CV",85]].map(x=>`<div class="card subject"><small>${x[0]}</small><div class="score">${x[1]}</div><div class="progress"><i style="width:${x[1]}%"></i></div></div>`).join("")}</div></div>`}
+function studentPages(){if(S.page==="dashboard")return student();if(S.page==="plans")return plans();if(S.page==="resources")return resources();if(S.page==="alerts")return alerts();if(S.page==="performance")return trends();if(S.page==="assignments")return assignments();if(S.page==="profile")return settings();return student()}
+function assignments(){let a=S.assignments.filter(x=>x.student_id===1);return `<div class="card">${a.map(x=>`<div class="step" style="margin-bottom:8px"><span class="num">☑</span><div style="flex:1"><b>${x.title}</b><small>Due ${x.due}</small></div><span class="pill ${x.status==="Completed"?"low":"high"}">${x.status}</span>${x.status!=="Completed"?`<button class="action" onclick="completeAssignment(${x.id})">Complete</button>`:""}</div>`).join("")}</div>`}
+function newPlan(id=1){modal(`<button class="close" onclick="closeModal()">×</button><h2 style="font-size:16px">Create Intervention Plan</h2><div class="fields"><div class="field"><label>Student ID</label><input id="pid" value="${id}"></div><div class="field"><label>Priority</label><select id="pri"><option>High</option><option>Medium</option><option>Low</option></select></div><div class="field"><label>Title</label><input id="pt" value="7-Day Academic Improvement Plan"></div><div class="field"><label>Progress</label><input id="pg" type="number" value="0"></div><div class="field" style="grid-column:1/-1"><label>Description</label><textarea id="pd">Improve attendance, complete assignments and focus on weak subjects.</textarea></div></div><button class="primary" style="margin-top:12px" onclick="savePlan()">Create</button>`)}
+async function savePlan(){try{await api("/plans",{method:"POST",body:JSON.stringify({student_id:+pid.value,title:pt.value,priority:pri.value,description:pd.value,progress:+pg.value})});closeModal();await load();render();toast("Plan created")}catch(e){toast(e.message)}}
+function newResource(){modal(`<button class="close" onclick="closeModal()">×</button><h2 style="font-size:16px">Add Resource</h2><div class="fields"><div class="field"><label>Title</label><input id="rt"></div><div class="field"><label>Subject</label><input id="rs"></div><div class="field"><label>Type</label><select id="rx"><option>Video</option><option>PDF</option><option>Worksheet</option></select></div><div class="field"><label>Duration</label><input id="rd"></div></div><button class="primary" style="margin-top:12px" onclick="saveResource()">Add</button>`)}
+async function saveResource(){await api("/resources",{method:"POST",body:JSON.stringify({title:rt.value,subject:rs.value,type:rx.value,duration:rd.value,url:"#"} )});closeModal();await load();render();toast("Resource added")}
+function addStudent(){modal(`<button class="close" onclick="closeModal()">×</button><h2 style="font-size:16px">Add Student</h2><div class="fields"><div class="field"><label>Name</label><input id="sn"></div><div class="field"><label>Student ID</label><input id="sid"></div><div class="field"><label>Section</label><input id="sec" value="A"></div><div class="field"><label>Attendance</label><input id="attn" type="number" value="75"></div></div><button class="primary" style="margin-top:12px" onclick="saveStudent()">Add</button>`)}
+async function saveStudent(){try{await api("/students",{method:"POST",body:JSON.stringify({name:sn.value,student_id:sid.value,section:sec.value,attendance:+attn.value})});closeModal();await load();render();toast("Student added")}catch(e){toast(e.message)}}
+function simulate(){modal(`<button class="close" onclick="closeModal()">×</button><h2 style="font-size:16px">What-If Academic Simulator</h2><div class="field"><label>Attendance: <b id="av">72%</b></label><input id="aa" type="range" min="40" max="100" value="72" oninput="av.textContent=this.value+'%';calc()"></div><div class="field" style="margin-top:12px"><label>Subject score: <b id="sv">42</b></label><input id="sscore" type="range" min="20" max="100" value="42" oninput="sv.textContent=this.value;calc()"></div><div class="field" style="margin-top:12px"><label>Pending assignments: <b id="pv">1</b></label><input id="pp" type="range" min="0" max="5" value="1" oninput="pv.textContent=this.value;calc()"></div><div style="text-align:center;margin-top:15px"><small class="muted">Projected risk</small><div id="riskv" style="font-size:32px;font-weight:800;color:#ef5350">72%</div></div>`);calc()}
+async function calc(){try{let d=await api("/simulate",{method:"POST",body:JSON.stringify({attendance:+aa.value,subject_score:+sscore.value,trend:55,pending:+pp.value})});riskv.textContent=d.risk+"%";riskv.style.color=d.band==="High"?"#ef5350":d.band==="Medium"?"#f59e0b":"#20a66a"}catch(e){}}
+async function completeAssignment(id){await api("/assignments/"+id,{method:"PUT"});await load();render();toast("Assignment completed")}
+function newFollowup(){modal(`<button class="close" onclick="closeModal()">×</button><h2 style="font-size:16px">Add Follow-up</h2><div class="fields"><div class="field"><label>Student ID</label><input id="fi" value="1"></div><div class="field"><label>Title</label><input id="ft" value="Mentor check-in"></div><div class="field"><label>Due</label><input id="fd" value="Tomorrow"></div></div><button class="primary" style="margin-top:12px" onclick="saveFollow()">Add</button>`)}
+async function saveFollow(){await api("/followups",{method:"POST",body:JSON.stringify({student_id:+fi.value,title:ft.value,due:fd.value})});closeModal();await load();render();toast("Follow-up created")}
+async function completeFollowup(id){await api("/followups/"+id,{method:"PUT"});await load();render();toast("Follow-up completed")}
+async function readAll(){await api("/notifications/read-all",{method:"POST"});await load();render();toast("Alerts marked read")}
+async function report(){let d=await api("/reports/generate",{method:"POST"});modal(`<button class="close" onclick="closeModal()">×</button><h2 style="font-size:16px">Live Risk Report</h2><p class="muted" style="font-size:9px">${d.generatedAt}</p><div class="grid cols2">${k("Total",d.total,"Students")}${k("High",d.high,"Immediate","down")}${k("Medium",d.medium,"Monitor")}${k("Low",d.low,"Stable","up")}</div>`)}
+function mainPage(){return S.role==="student"?studentPages():(S.page==="dashboard"?dash():S.page==="students"?students():S.page==="alerts"?alerts():S.page==="risk"?risk():S.page==="trends"?trends():S.page==="insights"?insights():S.page==="plans"?plans():S.page==="resources"?resources():S.page==="followups"?followups():S.page==="reports"?reports():settings())}
+function render(){document.getElementById("root").innerHTML=shell(mainPage())}
+(async()=>{try{[S.students,S.plans,S.assignments,S.resources,S.alerts,S.followups]=await Promise.all([api("/students"),api("/plans"),api("/assignments"),api("/resources"),api("/notifications"),api("/followups")])}catch(e){toast("Start backend first")}render()})();
+</script></body></html>
